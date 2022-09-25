@@ -17,9 +17,6 @@
 - 
 - 
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Структура отчета
 
@@ -53,23 +50,37 @@
 11) При столкновении Cube должен менять свой цвет на зелёный, а при завершении столкновения обратно на красный.
 
 
-```py
+```c#
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+public class CheckCollider : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log(other.gameObject.name);
+        other.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        Debug.Log("Завершил столкновение с " + other.gameObject.name);
+        other.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+    }
+}
+
 
 ```
 
@@ -77,7 +88,10 @@ plt.scatter(x,y)
 
 
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### Продемонстрируйте на сцене в Unity следующее:
+### - Что произойдёт с координатами объекта, если он перестанет быть дочерним?
+### - Создайте три различных примера работы компонента RigidBody?
+
 
 - Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
 - Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
